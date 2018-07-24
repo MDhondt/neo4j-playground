@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>dhondt.tech</groupId>
+    <artifactId>neo4j-playground</artifactId>
+    <version>0.0.1</version>
+
+    <name>neo4j-playground</name>
+    <description>Let's test this thing that calls itself 'The fastest path to graph success'</description>
+
+    <organization>
+        <name>University of Life</name>
+    </organization>
+
+    <developers>
+        <developer>
+            <name>Dhondt Maarten</name>
+            <id>19910417</id>
+            <organization>University of Life</organization>
+        </developer>
+    </developers>
+
+    <properties>
+        <neo4j-driver.version>1.6.2</neo4j-driver.version>
+    </properties>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.neo4j.driver</groupId>
+            <artifactId>neo4j-java-driver</artifactId>
+            <version>${neo4j-driver.version}</version>
+        </dependency>
+    </dependencies>
+</project>

@@ -23,7 +23,16 @@
         </developer>
     </developers>
 
+    <scm>
+        <connection>scm:git:https://github.com/MDhondt/neo4j-playground.git</connection>
+        <developerConnection>scm:git:https://github.com/MDhondt/neo4j-playground.git</developerConnection>
+        <url>https://github.com/MDhondt/neo4j-playground</url>
+    </scm>
+
     <properties>
+        <java.build.version>10</java.build.version>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+
         <neo4j-driver.version>1.6.2</neo4j-driver.version>
     </properties>
 
@@ -34,4 +43,20 @@
             <version>${neo4j-driver.version}</version>
         </dependency>
     </dependencies>
+
+    <build>
+        <pluginManagement>
+            <plugins>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-compiler-plugin</artifactId>
+                    <version>3.7.0</version>
+                    <configuration>
+                        <source>${java.build.version}</source>
+                        <target>${java.build.version}</target>
+                    </configuration>
+                </plugin>
+            </plugins>
+        </pluginManagement>
+    </build>
 </project>

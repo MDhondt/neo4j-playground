@@ -1,4 +1,4 @@
-package tech.dhondt.neo4j.playground;
+package tech.dhondt.neo4j.playground.config;
 
 import org.neo4j.driver.v1.*;
 

@@ -5,43 +5,41 @@ import org.neo4j.ogm.annotation.Id;
 import org.neo4j.ogm.annotation.NodeEntity;
 import org.neo4j.ogm.annotation.Relationship;
 
-import java.util.HashSet;
+import java.io.Serializable;
 import java.util.Objects;
-import java.util.Set;
 
 import static org.neo4j.ogm.annotation.Relationship.INCOMING;
 
 @NodeEntity
-public class Farm {
+public abstract class Item implements Serializable {
 
     @Id
     @GeneratedValue
-    Long id;
-    String name;
-    @Relationship(type="FARMED_AT", direction = INCOMING)
-    Set<Animal> animals = new HashSet<>();
+    protected Long id;
 
-    public Farm(String name) {
+    protected String name;
+
+    @Relationship(type="HAS_ITEM", direction = INCOMING)
+    protected Location location;
+
+    public Item(String name) {
         this.name = name;
     }
 
-    public void addAnimal(Animal animal) {
-        this.animals.add(animal);
+    public void setLocation(Location location) {
+        this.location = location;
     }
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        Farm farm = (Farm) o;
-        return Objects.equals(id, farm.id) &&
-                       Objects.equals(name, farm.name) &&
-                       Objects.equals(animals, farm.animals);
+        Item org = (Item) o;
+        return Objects.equals(id, org.id);
     }
 
     @Override
     public int hashCode() {
-
-        return Objects.hash(id, name, animals);
+        return Objects.hash(id);
     }
 }

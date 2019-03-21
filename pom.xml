@@ -30,18 +30,22 @@
     </scm>
 
     <properties>
-        <java.build.version>10</java.build.version>
+        <java.build.version>1.8</java.build.version>
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.target>1.8</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <start-class>tech.dhondt.neo4j.playground.config.Main</start-class>
 
-        <neo4j-driver.version>1.6.2</neo4j-driver.version>
-        <spring-boot.version>2.0.3.RELEASE</spring-boot.version>
-        <spring-data-neo4j.version>5.0.8.RELEASE</spring-data-neo4j.version>
+        <neo4j-driver.version>1.7.3</neo4j-driver.version>
+        <spring-boot.version>2.1.3.RELEASE</spring-boot.version>
+        <spring-data-neo4j.version>5.1.5.RELEASE</spring-data-neo4j.version>
+        <controlsfx.version>8.40.14</controlsfx.version>
     </properties>
 
     <dependencies>
         <dependency>
             <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-web</artifactId>
+            <artifactId>spring-boot-starter</artifactId>
             <version>${spring-boot.version}</version>
         </dependency>
         <dependency>
@@ -54,21 +58,35 @@
             <artifactId>neo4j-java-driver</artifactId>
             <version>${neo4j-driver.version}</version>
         </dependency>
+        <dependency>
+            <groupId>org.controlsfx</groupId>
+            <artifactId>controlsfx</artifactId>
+            <version>${controlsfx.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>javax.inject</groupId>
+            <artifactId>javax.inject</artifactId>
+            <version>1</version>
+        </dependency>
     </dependencies>
 
     <build>
-        <pluginManagement>
-            <plugins>
-                <plugin>
-                    <groupId>org.apache.maven.plugins</groupId>
-                    <artifactId>maven-compiler-plugin</artifactId>
-                    <version>3.7.0</version>
-                    <configuration>
-                        <source>${java.build.version}</source>
-                        <target>${java.build.version}</target>
-                    </configuration>
-                </plugin>
-            </plugins>
-        </pluginManagement>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+                <configuration>
+                    <fork>true</fork>
+                    <mainClass>${start-class}</mainClass>
+                </configuration>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>repackage</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
     </build>
 </project>
